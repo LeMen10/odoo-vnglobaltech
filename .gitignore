@@ -49,3 +49,25 @@ package.json
 /man/
 /share/
 /src/
+
+venv/
+.venv/
+env/
+
+# log files
+*.log
+*.sql
+*.sqlite3
+*.db
+dump.rdb
+
+# editor/IDE config
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# system files
+.DS_Store
+Thumbs.db
+desktop.ini
