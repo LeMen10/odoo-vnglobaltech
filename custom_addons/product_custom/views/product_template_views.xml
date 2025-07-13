@@ -1,0 +1,28 @@
+<odoo>
+  <record id="product_template_form_external_url" model="ir.ui.view">
+    <field name="name">product.template.external.url</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+
+        <!-- Nhóm liên kết -->
+        <group string="Liên kết Website">
+          <field name="external_url" placeholder="https://yensaovnext.store/duong-dan"/>
+          <field name="custom_slug" placeholder="to-yen-cao-cap"/>
+        </group>
+
+        <!-- Mô tả ngắn -->
+        <group string="Mô tả ngắn (hiển thị đầu trang)">
+          <field name="description_sale" placeholder="Yến chưng ngũ vị bổ dưỡng..."/>
+        </group>
+
+        <!-- Mô tả chi tiết HTML -->
+        <group string="Mô tả chi tiết">
+          <field name="description" widget="html"/>
+        </group>
+
+      </xpath>
+    </field>
+  </record>
+</odoo>

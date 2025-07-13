@@ -1,0 +1,74 @@
+<odoo>
+    <template id="vnext_custom_product_template" name="Vnext Custom Product Template">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="row">
+                    <!-- Cột ảnh sản phẩm -->
+                    <div class="col-md-6">
+                        <img t-att-src="product.image_1920 and '/web/image/product.template/%s/image_1920' % product.id" alt="Ảnh sản phẩm" class="img-fluid rounded border shadow-sm"/>
+                    </div>
+
+                    <!-- Cột thông tin sản phẩm -->
+                    <div class="col-md-6">
+                        <h1 t-esc="product.name" class="mb-3"/>
+
+                        <div class="text-muted oe_structure" t-if="product.description_sale">
+                            <div t-raw="product.description_sale"/>
+                        </div>
+
+                        <p class="h5 mt-3">
+                            Giá bán: <strong class="text-danger">
+                            <t t-esc="('%.0f' % product.list_price)"/>đ</strong>
+                    </p>
+
+                    <t t-if="product.external_url">
+                        <a t-att-href="product.external_url" target="_blank" class="btn btn-primary btn-lg mt-3">
+                                Mua ngay
+                        </a>
+                    </t>
+                </div>
+            </div>
+
+            <!-- Thông tin chi tiết -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h4>Thông tin chi tiết sản phẩm</h4>
+                    <div class="oe_structure" t-if="product.description">
+                        <div t-raw="product.description"/>
+                    </div>
+                    <div t-if="not product.description">
+                        <em>Chưa có thông tin chi tiết...</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thuộc tính kỹ thuật (biến thể / thuộc tính) -->
+            <t t-if="product.attribute_line_ids">
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Thông số kỹ thuật</h5>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <t t-foreach="product.attribute_line_ids" t-as="attr">
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <t t-esc="attr.attribute_id.name"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <t t-foreach="attr.value_ids" t-as="val" t-separator=", ">
+                                                <t t-esc="val.name"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</template>
+</odoo>
